@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Task Manegement</title>
+</head>
+
+<body>
+	
+	<div th:if="${successMessage}" class="alert alert-info">
+       　 <span th:text="${successMessage}"></span>
+    </div>                   
+	<p>タスク一覧画面</p>
+	<table class="table"> 
+		<thead>
+			<tr>
+				<th scope="col">タスクID</th>
+				<th scope="col">タスク内容</th>
+				<th scope="col">備考欄</th>
+				<th scope="col">入力日</th>
+				<th scope="col">期限</th>
+				<th scope="col">完了日</th>
+				<th scope="col">送信チェック</th>
+				<th scope="col"></th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="contents : ${contents}">
+				<td th:text="${contents.getId()}"></td>
+				<td th:text="${contents.getContent()}"></td>
+				<td th:text="${contents.getMemo()}"></td>
+				<td th:text="${#dates.format(contents.getCreatedAt(),'yyyy/MM/dd')}"></td>
+				<td th:text="${contents.getDeadlineDate()}"></td>
+				<td th:text="${contents.getDoneDate()}"></td>
+				<td th:text="${contents.getMailFlag()}"></td>				
+				<td><a th:href="@{/content/__${contents.getId()}__/edit}">編集</a></td>
+
+			</tr>
+		</tbody>
+	</table>
+
+
+
+</body>
+
+</html>

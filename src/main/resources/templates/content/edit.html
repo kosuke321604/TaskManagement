@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>タスク編集画面</title>
+
+	<!-- Flatpickr -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+</head>
+
+<body>
+
+	<form method="post" th:action="@{/content/__${contentEditForm.getId()}__/update}" th:object="${contentEditForm}"
+		enctype="multipart/form-data">
+		
+		<input type="hidden" th:field="*{id}">
+		<div>　
+			<div>
+				<label for="name" class="">タスク内容</label>
+			</div>
+			<div>
+				　 <input type="text" class="form-control" th:field="*{content}">
+			</div>
+		</div>
+
+		<div>
+			<div>
+				<label for="name" class="">備考欄</label>
+			</div>
+			<div>
+				　<textarea class="form-control" th:field="*{memo}" cols="30" rows="5"></textarea>
+			</div>
+		</div>
+
+		<div>
+			<div>
+				<label for="name" class="">期限</label>
+			</div>
+			<div>
+				　　<input type="text" class="form-control" th:field="*{deadlineDate}">
+			</div>
+		</div>
+
+		<div>
+			<div>
+				<label for="name" class="">完了日</label>
+			</div>
+			<div>
+				　　<input type="text" class="form-control" th:field="*{doneDate}">
+			</div>
+		</div>
+
+		<div>
+			<div>
+				<label for="name" class="">送信チェック</label>
+			</div>
+			<div>
+				　　<input type="number" class="form-control" th:field="*{mailFlag}">
+			</div>
+		</div>
+
+		<div>
+			<button type="submit" class="">更新</button>
+		</div>
+
+
+	</form>
+
+	<!-- Flatpickr -->
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
+	<script th:src="@{/js/flatpickr.js}"></script>
+
+</body>
+
+</html>
